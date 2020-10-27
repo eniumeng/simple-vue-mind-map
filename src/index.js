@@ -1,4 +1,4 @@
-import MindMap from './mind-map'
+import MindMap from './mind-map.vue'
 
 MindMap.install = Vue => {
   Vue.component(MindMap.name, MindMap)

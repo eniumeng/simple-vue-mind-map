@@ -1,7 +1,7 @@
+const path = require('path')
+
 module.exports = {
-  pages: {
-    index: {
-      entry: 'test/main.js'
-    }
+  configureWebpack: config => {
+    config.entry.app = './test/main.js'
   }
 }

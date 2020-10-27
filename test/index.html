@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Vue Mind Map</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      #ctn {
+        margin: 50px auto;
+        width: 1000px;
+        height: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="ctn">
+        <mind-map></mind-map>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../lib/simple-vue-mind-map.min.js"></script>
+    <script>
+      Vue.use(MindMap)
+
+      var app = new Vue({
+        el: '#app'
+      })
+    </script>
+  </body>
+</html>
