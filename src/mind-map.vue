@@ -1,5 +1,5 @@
 <template>
-  <div class="mind-map-item full-screen">
+  <div ref="mind-map-item" class="mind-map-item">
     <div class="tools">
       <div class="operation" @click="toggleZoomSelector">
         <span>{{ Math.round(ratio * 100) }}%</span>
@@ -13,12 +13,18 @@
       <div class="separator"></div>
       <div class="operation" @click="handleRelocation">center</div>
       <div class="separator"></div>
-      <div class="operation" @click="handleRelocation">full screen</div>
+      <div v-if="inFullScreen" class="operation" @click="handleExitFullScreen">exit full screen</div>
+      <div v-else class="operation" @click="handleFullScreen">full screen</div>
     </div>
     <div ref="drawing-board" class="drawing-board">
-      <div ref="tela" class="tela">
-        <div ref="map-root" style="top: 50%;left: 50%;transform: translate3d(-50%, -50%, 0);background-color: pink;">
-          内容内容
+      <div ref="tela" class="tela" @click="(e) => handleTelaClick(e)">
+        <div class="map-level">
+          <div ref="map-root" class="map-root" contenteditable="true"></div>
+        </div>
+        <div v-for="(level, index) in levelNodes" :key="index" class="map-level">
+          <div v-for="(data, index) in level" :key="index" class="map-node" contenteditable="true">
+            {{ data }}
+          </div>
         </div>
       </div>
     </div>
@@ -28,24 +34,55 @@
 <script>
 export default {
   name: 'MindMap',
+  props: ['data'],
   data () {
     return {
+      $mindMapItem: null,
       $ratioSelector: null,
       $drawingBoard: null,
       $tela: null,
       $mapRoot: null,
       ratio: 1,
       selectableRatios: [3, 2.5, 2, 1.5, 1, 0.5],
-      ratioSelectorShowing: false
+      ratioSelectorShowing: false,
+      inFullScreen: false,
+      mapData: JSON.parse(JSON.stringify(this.data))
     }
   },
   mounted () {
     const $refs = this.$refs
 
+    this.$mindMapItem = $refs['mind-map-item']
     this.$ratioSelector = $refs['ratio-selector']
     this.$drawingBoard = $refs['drawing-board']
     this.$tela = $refs.tela
     this.$mapRoot = $refs['map-root']
+
+    this.renderNodes()
+  },
+  computed: {
+    levelNodes () {
+      const levelNodes = []
+      let currentLevel = this.mapData.children
+
+      while (currentLevel.length > 0) {
+        let nextLevel = []
+
+        const currentLevelData = currentLevel.map(node => {
+          if (node.children.length > 0) {
+            nextLevel = nextLevel.concat(node.children)
+          }
+
+          return node.content
+        })
+
+        levelNodes.push(currentLevelData)
+
+        currentLevel = nextLevel
+      }
+
+      return levelNodes
+    }
   },
   methods: {
     toggleZoomSelector () {
@@ -81,6 +118,32 @@ export default {
       const mapRootRect = $mapRoot.getBoundingClientRect()
 
       $drawingBoard.scrollTo((mapRootRect.x - telaRect.x) - drawingBoardRect.width / 2 + mapRootRect.width / 2, (mapRootRect.y - telaRect.y) - 50)
+    },
+    handleFullScreen () {
+      this.$mindMapItem.classList.add('full-screen')
+
+      this.inFullScreen = true
+    },
+    handleExitFullScreen () {
+      this.$mindMapItem.classList.remove('full-screen')
+
+      this.inFullScreen = false
+    },
+    handleTelaClick (e) {
+      const target = e.target
+
+      this.$tela.querySelectorAll('.map-root, .map-node').forEach(item => {
+        item.classList.remove('focus')
+      })
+
+      if (target.classList.contains('map-root') || target.classList.contains('map-node')) {
+        target.classList.add('focus')
+      }
+    },
+    renderNodes () {
+      this.$mapRoot.innerText = this.mapData.content
+
+      this.handleRelocation()
     }
   }
 }
@@ -168,15 +231,34 @@ div {
 }
 
 .tela {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  width: 3000px;
+  height: 3000px;
   background-color: #EFF6FB;
   transition: transform .3s;
   transform-origin: 0 0;
+  font-size: 14px;
+  overflow: hidden;
 
-  div {
-    position: absolute;
+  .map-level {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+  .map-root, .map-node {
+    margin: 0 20px;
+    padding: 8px 15px;
+    max-width: 150px;
+    background-color: #FFF;
+    outline: none;
+  }
+
+  .map-root {
+    border-radius: 30px;
+  }
+
+  .focus {
+    box-shadow: 0 0 0 3px lightblue;
   }
 }
 </style>
