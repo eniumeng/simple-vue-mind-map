@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    <mind-map :data="map" width="1104" height="400" :show-reason="false"></mind-map>
+    <mind-map
+      :data="map"
+      width="1104"
+      height="400"
+      :show-reason="false"
+      @data-change="handleDataChange">
+    </mind-map>
   </div>
 </template>
 
@@ -53,6 +59,11 @@ export default {
           ]
         }
       ]
+    }
+  },
+  methods: {
+    handleDataChange (data) {
+      this.map = data
     }
   }
 }

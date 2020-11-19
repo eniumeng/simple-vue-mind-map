@@ -343,6 +343,8 @@ export default {
             console.log('输入回车', data.label, this.inputContent)
             data.label = this.inputContent
 
+            this.$emit('data-change', this.mapData)
+
             $ele.querySelector('span').blur()
 
             this.handleClearTela()
@@ -367,7 +369,11 @@ export default {
 
       this.handleClearTela()
 
-      this.currentData.label = this.currentComponent.$el.querySelector('span').innerText
+      if (this.currentComponent) {
+        this.currentData.label = this.currentComponent.$el.querySelector('span').innerText
+
+        this.$emit('data-change', this.mapData)
+      }
     },
     handleClearTela () {
       document.querySelectorAll('.org-chart-node-label-inner').forEach(item => {
