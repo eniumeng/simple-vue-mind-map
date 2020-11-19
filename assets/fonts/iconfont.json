@@ -1,0 +1,93 @@
+{
+  "id": "2211059",
+  "name": "simple-vue-mind-map",
+  "font_family": "simple-vue-mind-map",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "18318509",
+      "name": "ic_arrow_solid_16",
+      "font_class": "_arrow_solid",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "18318123",
+      "name": "img_card_close_12",
+      "font_class": "_card_close",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "18286786",
+      "name": "ic_widonws_mini_line_24",
+      "font_class": "_widonws_mini",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "18286386",
+      "name": "ic_structure_vert_line_24",
+      "font_class": "_structure_vert",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "18286256",
+      "name": "ic_structure_hori_line_24",
+      "font_class": "_structure_hori",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "18286258",
+      "name": "ic_subtopic_line_24",
+      "font_class": "_subtopic",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "18286259",
+      "name": "ic_zoomin_line_24",
+      "font_class": "_zoomin",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "18286260",
+      "name": "ic_widonws_max_line_24",
+      "font_class": "_widonws_max",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "18286261",
+      "name": "ic_zoomout_line_24",
+      "font_class": "_zoomout",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "18286262",
+      "name": "ic_topic_line_24",
+      "font_class": "_topic",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "18286263",
+      "name": "ic_centerset_line_24",
+      "font_class": "_centerset",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "18286184",
+      "name": "ic-down-arrow",
+      "font_class": "_arrow_down",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}

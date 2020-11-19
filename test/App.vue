@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <div id="ctn">
-      <mind-map :data="map"></mind-map>
-    </div>
+    <mind-map :data="map" width="1104" height="400" :show-reason="false"></mind-map>
   </div>
 </template>
 
@@ -11,45 +9,66 @@ export default {
   name: 'App',
   data () {
     return {
-      map: {
-        content: '根节点',
-        children: [{
-          content: '叶子节点1',
-          children: [{
-            content: '叶子节点1-1',
-            children: []
-          }, {
-            content: '叶子节点1-2',
-            children: []
-          }]
-        }, {
-          content: '叶子节点2',
-          children: [{
-            content: '叶子节点2-1',
-            children: [{
-              content: '叶子节点2-1-1',
-              children: []
-            }]
-          }]
-        }, {
-          content: '叶子节点3',
-          children: []
-        }]
-      }
+      map: [
+        {
+          label: 'xxx科技有有限公司',
+          reason: 0,
+          children: [
+            {
+              label: '产品研发部',
+              reason: 0,
+              children: [
+                {
+                  label: '研发-前端',
+                  reason: 0
+                },
+                {
+                  label: '研发-后端',
+                  reason: 0
+                },
+                {
+                  label: 'UI 设计',
+                  reason: 0
+                }
+              ]
+            },
+            {
+              label: '销售部',
+              reason: 0,
+              children: [
+                {
+                  label: '销售一部',
+                  reason: 0
+                },
+                {
+                  label: '销售二部',
+                  reason: 0
+                }
+              ]
+            },
+            {
+              label: '财务部',
+              reason: 0
+            }
+          ]
+        }
+      ]
     }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 * {
   margin: 0;
   padding: 0;
 }
 
-#ctn {
-  margin: 50px auto;
-  width: 1000px;
-  height: 600px;
+#app {
+  margin-top: 50px;
+}
+
+::v-deep .drawing-board {
+  border-radius: 4px;
 }
 </style>

@@ -5,8 +5,7 @@
     "serve": "vue-cli-service serve",
     "build:test": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build:lib": "rollup -c",
-    "prepublishOnly": "npm run build:lib"
+    "build:lib": "vue-cli-service build --target lib --name simple-vue-mind-map --dest lib src/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +22,8 @@
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-image": "^2.0.5",
     "@rollup/plugin-node-resolve": "^9.0.0",
+    "@vue/babel-plugin-transform-vue-jsx": "^1.2.1",
+    "@vue/babel-preset-jsx": "^1.2.4",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
@@ -43,5 +44,11 @@
     "sass-loader": "^8.0.2",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
+  },
+  "dependencies": {
+    "@gahing/vcontextmenu": "^1.0.0",
+    "@xunlei/vue-context-menu": "^1.0.2",
+    "v-tooltip": "^2.0.3",
+    "vue-okr-tree": "^1.0.4"
   }
 }

@@ -4,6 +4,7 @@ import vue from 'rollup-plugin-vue'
 import babel from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 import image from '@rollup/plugin-image'
+import jsx from '@vue/babel-plugin-transform-vue-jsx'
 
 export default {
   input: 'src/index.js',
@@ -16,6 +17,7 @@ export default {
     commonjs(),
     resolve(),
     vue(),
+    jsx(),
     image(),
     babel({
       babelHelpers: 'runtime'
