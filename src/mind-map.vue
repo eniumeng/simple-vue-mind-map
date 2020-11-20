@@ -448,9 +448,13 @@ export default {
       this.contextMenuVisible = false
     },
     handleRemove () {
-      this.$refs.tree.remove(this.currentNode)
+      this.$emit('node-delete', this.currentData, val => {
+        if (val === true) {
+          this.$refs.tree.remove(this.currentNode)
 
-      this.contextMenuVisible = false
+          this.contextMenuVisible = false
+        }
+      })
     }
   }
 }

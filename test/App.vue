@@ -5,7 +5,8 @@
       width="1104"
       height="400"
       :show-reason="false"
-      @data-change="handleDataChange">
+      @data-change="handleDataChange"
+      @node-delete="handleDeleteNode">
     </mind-map>
   </div>
 </template>
@@ -65,6 +66,9 @@ export default {
   methods: {
     handleDataChange (data) {
       this.map = data
+    },
+    handleDeleteNode (nodeData, callback) {
+      callback(true)
     }
   }
 }

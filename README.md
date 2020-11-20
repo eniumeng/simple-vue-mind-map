@@ -26,7 +26,14 @@
   step 3: there will be a component named mind-map in global, you can use it:
 
   ```html
-  <mind-map :data="map" width="1104" height="400" @data-change="handleDataChange"></mind-map>
+  <mind-map
+    :data="map"
+    width="1104"
+    height="400"
+    :show-reason="false"
+    @data-change="handleDataChange"
+    @node-delete="handleDeleteNode">
+  </mind-map>
   ```
 
   full example:
@@ -39,7 +46,8 @@
         width="1104"
         height="400"
         :show-reason="false"
-        @data-change="handleDataChange">
+        @data-change="handleDataChange"
+        @node-delete="handleDeleteNode">
       </mind-map>
     </div>
   </template>
@@ -52,6 +60,7 @@
         map: [
           {
             label: 'xxx科技有有限公司',
+            root: true,
             reason: 0,
             children: [
               {
@@ -98,6 +107,9 @@
     methods: {
       handleDataChange (data) {
         this.map = data
+      },
+      handleDeleteNode (nodeData, callback) {
+        callback(true)
       }
     }
   }
