@@ -266,18 +266,18 @@ export default {
     handleRenderContent (h, node) {
       return (
         <div style="position: relative;text-align: left;">
-          <div class="act act-left" on-click={ this.handleInsertBefore }>
+          { node.data.root ? '' : <div class="act act-left" on-click={ this.handleInsertBefore }>
             <i class="normal-icon icon simple-vue-mind-map icon_arrow_solid"></i>
-          </div>
-          <div class="act act-right" on-click={ this.handleInsertAfter }>
+          </div> }
+          { node.data.root ? '' : <div class="act act-right" on-click={ this.handleInsertAfter }>
             <i class="normal-icon icon simple-vue-mind-map icon_arrow_solid"></i>
-          </div>
-          <div class="act act-down" on-click={ this.handleAppendChild }>
+          </div> }
+          { node.data.root ? '' : <div class="act act-down" on-click={ this.handleAppendChild }>
             <i class="normal-icon icon simple-vue-mind-map icon_arrow_solid"></i>
-          </div>
-          <div class="act act-close" on-click={ this.handleRemove }>
+          </div> }
+          { node.data.root ? '' : <div class="act act-close" on-click={ this.handleRemove }>
             <i class="normal-icon icon simple-vue-mind-map icon_card_close"></i>
-          </div>
+          </div> }
           <span contenteditable="true" style="outline: none;">{ node.data.label }</span>
           { this.showReason && node.data.reason ? <div class="reason">真因{ this.reasonCount > 1 ? node.data.reason : '' }</div> : '' }
         </div>

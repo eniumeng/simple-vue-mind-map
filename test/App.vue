@@ -18,6 +18,7 @@ export default {
       map: [
         {
           label: 'xxx科技有有限公司',
+          root: true,
           reason: 0,
           children: [
             {
