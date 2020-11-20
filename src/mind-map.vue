@@ -272,9 +272,9 @@ export default {
           { node.data.root ? '' : <div class="act act-right" on-click={ this.handleInsertAfter }>
             <i class="normal-icon icon simple-vue-mind-map icon_arrow_solid"></i>
           </div> }
-          { node.data.root ? '' : <div class="act act-down" on-click={ this.handleAppendChild }>
+          <div class="act act-down" on-click={ this.handleAppendChild }>
             <i class="normal-icon icon simple-vue-mind-map icon_arrow_solid"></i>
-          </div> }
+          </div>
           { node.data.root ? '' : <div class="act act-close" on-click={ this.handleRemove }>
             <i class="normal-icon icon simple-vue-mind-map icon_card_close"></i>
           </div> }
