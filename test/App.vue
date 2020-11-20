@@ -6,7 +6,7 @@
       height="400"
       :show-reason="false"
       @data-change="handleDataChange"
-      @node-delete="handleDeleteNode">
+      @node-delete="handleNodeDelete">
     </mind-map>
   </div>
 </template>
@@ -67,8 +67,10 @@ export default {
     handleDataChange (data) {
       this.map = data
     },
-    handleDeleteNode (nodeData, callback) {
-      callback(true)
+    handleNodeDelete (nodeData, callback) {
+      console.log(nodeData)
+
+      callback(false)
     }
   }
 }
