@@ -76,7 +76,7 @@ Vue.use(VTooltip)
 
 export default {
   name: 'MindMap',
-  props: ['data', 'width', 'height', 'showReason'],
+  props: ['data', 'width', 'height', 'showReason', 'dataTemplate'],
   components: {
     VueOkrTree,
     ContextMenu
@@ -424,26 +424,17 @@ export default {
       this.currentComponent.$el.click()
     },
     handleAppendChild () {
-      this.$refs.tree.append({
-        label: '新节点',
-        reason: 0
-      }, this.currentNode)
+      this.$refs.tree.append(Object.assign({}, this.dataTemplate), this.currentNode)
 
       this.contextMenuVisible = false
     },
     handleInsertBefore () {
-      this.$refs.tree.insertBefore({
-        label: '新节点',
-        reason: 0
-      }, this.currentNode)
+      this.$refs.tree.insertBefore(Object.assign({}, this.dataTemplate), this.currentNode)
 
       this.contextMenuVisible = false
     },
     handleInsertAfter () {
-      this.$refs.tree.insertAfter({
-        label: '新节点',
-        reason: 0
-      }, this.currentNode)
+      this.$refs.tree.insertAfter(Object.assign({}, this.dataTemplate), this.currentNode)
 
       this.contextMenuVisible = false
     },

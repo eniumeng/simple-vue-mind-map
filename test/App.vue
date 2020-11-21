@@ -5,6 +5,7 @@
       width="1104"
       height="400"
       :show-reason="false"
+      :data-template="{label: '新节点',reason: 0}"
       @data-change="handleDataChange"
       @node-delete="handleNodeDelete">
     </mind-map>
