@@ -308,12 +308,12 @@ export default {
 
       $ele.addEventListener('compositionstart', function (e) {
         isInputZh = true
-        console.log('开始输入中文')
+        // console.log('开始输入中文')
       }, false)
 
       $ele.addEventListener('compositionend', function (e) {
         isInputZh = false
-        console.log('结束输入中文', e.target.innerText)
+        // console.log('结束输入中文', e.target.innerText)
 
         var event = new Event('input', {
           bubbles: true,
@@ -324,11 +324,11 @@ export default {
       }, false)
 
       $ele.addEventListener('input', (e) => {
-        console.log(isInputZh)
+        // console.log(isInputZh)
 
         if (isInputZh) return
 
-        console.log(e.target.innerText)
+        // console.log(e.target.innerText)
 
         this.inputContent = e.target.innerText
       })
@@ -340,7 +340,7 @@ export default {
           if (!e.shiftKey) {
             e.preventDefault()
 
-            console.log('输入回车', data.label, this.inputContent)
+            // console.log('输入回车', data.label, this.inputContent)
             data.label = this.inputContent
 
             this.$emit('data-change', this.mapData)
